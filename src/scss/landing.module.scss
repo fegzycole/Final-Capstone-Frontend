@@ -1,16 +1,18 @@
 .LandingPage {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   background: url("../assets/vespa.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   position: relative;
+  padding-bottom: 20px;
 }
 
 .Overlay {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100vh;
   top: 0;
@@ -49,11 +51,9 @@
 }
 
 .CtaSection {
-  position: absolute;
+  position: relative;
   width: 95%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 30px auto;
   text-align: center;
   z-index: 2;
   font-family: 'Roboto Slab', serif;
