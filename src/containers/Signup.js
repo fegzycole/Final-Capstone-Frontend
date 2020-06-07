@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import SignupStyles from '../scss/signup.module.scss';
 import Header from '../components/Header';
@@ -14,26 +15,62 @@ const Signup = () => {
   const [lastName, setLastName] = useState('');
   const [lastNameError, setLastNameError] = useState(null);
   const [email, setEmail] = useState('');
-  const [emailError, setEmailNameError] = useState(null);
+  const [emailError, setEmailError] = useState(null);
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState(null);
 
+  const clearErrorMessages = () => {
+    setFirstNameError(null);
+    setLastNameError(null);
+    setEmailError(null);
+    setPasswordError(null);
+    setConfirmPasswordError(null);
+  };
+
   const signup = async e => {
     e.preventDefault();
 
-    try {
-      
-    } catch (error) {
+    clearErrorMessages();
 
+    if (password !== confirmPassword) {
+      return setConfirmPasswordError('Passwords must match');
+    }
+
+    try {
+      const { data: { token } } = await axios.post('https://desolate-mountain-07619.herokuapp.com/api/v1/auth/signup', {
+        user: {
+          first_name: firstName,
+          last_name: lastName,
+          email,
+          password,
+        },
+      });
+
+      return localStorage.setItem('token', token);
+    } catch (error) {
+      if (!error.response) {
+        return error.message;
+      }
+
+      const { response: { data: { errors } } } = error;
+
+      errors.forEach(err => {
+        if (err.toLowerCase().match('first')) setFirstNameError(err);
+        if (err.toLowerCase().match('last')) setLastNameError(err);
+        if (err.toLowerCase().match('email')) setEmailError(err);
+        if (err.toLowerCase().match('password')) setPasswordError(err);
+      });
+
+      return null;
     }
   };
   return (
     <div className={SignupStyles.Signup}>
       <Header />
       <Overlay />
-      <form className={SignupStyles.Form}>
+      <form className={SignupStyles.Form} onSubmit={signup}>
         <h2>Create An Account</h2>
 
         <div className={SignupStyles.FormSection}>
