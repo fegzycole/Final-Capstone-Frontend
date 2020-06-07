@@ -8,6 +8,7 @@ import EyeIcon from '../assets/eye.svg';
 import PersonIcon from '../assets/man.svg';
 import MailIcon from '../assets/mail.svg';
 import FormArea from '../components/FormArea';
+import Spinner from '../components/Spinner';
 
 const Signup = () => {
   const [firstName, setFirstName] = useState('');
@@ -20,6 +21,7 @@ const Signup = () => {
   const [passwordError, setPasswordError] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState(null);
+  const [showSpinner, setShowSpinner] = useState(false);
 
   const clearErrorMessages = () => {
     setFirstNameError(null);
@@ -39,6 +41,7 @@ const Signup = () => {
     }
 
     try {
+      setShowSpinner(true);
       const { data: { token } } = await axios.post('https://desolate-mountain-07619.herokuapp.com/api/v1/auth/signup', {
         user: {
           first_name: firstName,
@@ -48,8 +51,11 @@ const Signup = () => {
         },
       });
 
+      setShowSpinner(false);
       return localStorage.setItem('token', token);
     } catch (error) {
+      setShowSpinner(false);
+
       if (!error.response) {
         return error.message;
       }
@@ -68,6 +74,9 @@ const Signup = () => {
   };
   return (
     <div className={SignupStyles.Signup}>
+      {
+        showSpinner ? <Spinner /> : null
+      }
       <Header />
       <Overlay />
       <form className={SignupStyles.Form} onSubmit={signup}>
