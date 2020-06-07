@@ -25,11 +25,11 @@
 }
 
 .HeaderDiv {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   margin: 0 auto;
   border-radius: 50%;
-  background-color: #FFFFFF;
+  background-color: #96bf24;
   position: relative;
   z-index: 2;
   display: flex;
@@ -38,12 +38,98 @@
   align-items: center;
 
   h3 {
-    color: #000000;
+    color: #FFFFFF;
     font-family: 'Lobster', cursive;
     text-decoration: underline;
     text-align: center;
     transform: skewY(-10deg);
-    font-size: 40px;
+    font-size: 70px;
     margin-top: -15px;
+  }
+}
+
+.CtaSection {
+  position: absolute;
+  width: 95%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  font-family: 'Roboto Slab', serif;
+  margin-bottom: 12px;
+
+  h2 {
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-size: 55px;
+    letter-spacing: 10px;
+  }
+
+  p {
+    font-size: 22px;
+    color: rgb(231, 224, 224);
+    font-weight: 300;
+    margin-bottom: 30px;
+  }
+}
+
+.SignupBtn {
+  color: #FFFFFF;
+  text-decoration: none;
+  margin: 15px 0;
+  background-color: #96bf24;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 300;
+  font-family: 'Poppins', sans-serif;
+}
+
+.SignupBtn:hover {
+  border: 1px solid #96bf24;
+  background-color: #FFFFFF;
+  color: #96bf24;
+  padding: 9px 24px;
+}
+
+.CtaLogin {
+  margin: 40px auto;
+  width: 50%;
+  display: flex;
+  font-style: normal;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+
+  p {
+    text-align: center;
+    font-size: 19px;
+  }
+}
+
+.SignInText {
+  align-self: flex-start;
+  color: #96bf24;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 2px;
+  font-family: 'Poppins', sans-serif;
+}
+
+@media screen and (max-width: 600px) {
+  .CtaSection {
+    width: 95%;
+
+    h2 {
+      font-size: 30px;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 16px;
+    }
   }
 }
