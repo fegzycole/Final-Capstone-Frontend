@@ -1,23 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { addVespas } from '../redux/actions/index';
+import Spinner from '../components/Spinner';
 
 const VespaList = ({ vespas, addVespas }) => {
-  useEffect(() => {
-    if (!vespas) {
+  const [showSpinner, setShowSpinner] = useState(false);
+
+  const fetchVespas = async () => {
+    if (vespas.length === 0) {
       const token = localStorage.getItem('token');
+
       try {
-        const { data } = axios.request({
+        setShowSpinner(true);
+
+        const { data: { automobiles } } = await axios.request({
           method: 'GET',
-          url: 'https://avariz-core.herokuapp.com/trading/pairs/fetch?category=all',
+          url: 'https://desolate-mountain-07619.herokuapp.com/api/v1/automobiles',
           headers: {
             Authorization: token,
           },
         });
-        return addVespas(data);
+
+        setShowSpinner(false);
+        return addVespas(automobiles);
       } catch (err) {
+        setShowSpinner(false);
+
         if (!err.response) {
           return err.message;
         }
@@ -27,11 +37,19 @@ const VespaList = ({ vespas, addVespas }) => {
     }
 
     return null;
-  }, []);
+  };
+
+  const initialize = () => {
+    fetchVespas();
+  };
+
+  useEffect(initialize, []);
 
   return (
     <div>
-      Hello
+      {
+        showSpinner ? <Spinner /> : null
+      }
     </div>
   );
 };

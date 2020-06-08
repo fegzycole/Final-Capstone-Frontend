@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import SignupStyles from '../scss/signup.module.scss';
 import Header from '../components/Header';
 import Overlay from '../components/Overlay';
@@ -10,7 +11,7 @@ import MailIcon from '../assets/mail.svg';
 import FormArea from '../components/FormArea';
 import Spinner from '../components/Spinner';
 
-const Signup = () => {
+const Signup = ({ history }) => {
   const [firstName, setFirstName] = useState('');
   const [firstNameError, setFirstNameError] = useState(null);
   const [lastName, setLastName] = useState('');
@@ -52,7 +53,11 @@ const Signup = () => {
       });
 
       setShowSpinner(false);
-      return localStorage.setItem('token', token);
+      localStorage.setItem('token', token);
+
+      history.push('/VespaList');
+
+      return null;
     } catch (error) {
       setShowSpinner(false);
 
@@ -160,4 +165,12 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+Signup.propTypes = {
+  history: PropTypes.instanceOf(Object),
+};
+
+Signup.defaultProps = {
+  history: {},
+};
+
+export default withRouter(Signup);
