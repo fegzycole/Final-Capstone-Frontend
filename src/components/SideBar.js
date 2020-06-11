@@ -7,13 +7,19 @@ const SideBar = () => (
   <div className={SideBarStyles.SideBar}>
     <h3 className={SideBarStyles.Header}>Vespa</h3>
 
-    <ul>
-      <li><NavLink to="/VespaList">MODELS</NavLink></li>
+    <ul className={SideBarStyles.UnorderedList}>
+      <li className={SideBarStyles.Model}>
+        <NavLink to="/VespaList" className={SideBarStyles.ModelLink}>
+          MODELS
+        </NavLink>
+      </li>
       <li>LOGOUT</li>
     </ul>
 
-    <SocialLinks />
-    <p>&copy; 2020 Ferguson Iyara</p>
+    <div className={SideBarStyles.SocialLinks}>
+      <SocialLinks />
+      <p className={SideBarStyles.SocialLinksP}>&copy; 2020 Ferguson Iyara</p>
+    </div>
   </div>
 );
 

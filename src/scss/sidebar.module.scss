@@ -1,3 +1,55 @@
 .SideBar {
-    
+  position: fixed;
+  width: 200px;
+  padding: 20px 0;
+  height: 100vh;
+  box-shadow: inset 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.05);
+  border: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+.Header {
+  font-family: 'Lobster', cursive;
+  text-decoration: underline;
+  text-align: center;
+  transform: skewY(-10deg);
+  font-size: 40px;
+  margin-top: -15px;
+  color: #747171;
+}
+
+.UnorderedList {
+  margin-top: 150px;
+  margin-left: 30px;
+
+  li {
+    list-style-type: none;
+    margin-bottom: 20px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700px;
+    letter-spacing: 1px;
+    padding: 7px 15px;
+    color: rgb(112, 112, 112);
+  }
+}
+
+.Model {
+  background: rgb(150, 190, 14);
+}
+
+.ModelLink {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.SocialLinks {
+  position: fixed;
+  bottom: 10px;
+  width: 200px;
+}
+
+.SocialLinksP {
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+  color: rgb(112, 112, 112);
+  font-size: 13px;
 }
