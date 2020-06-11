@@ -91,7 +91,7 @@ const SignIn = ({ history }) => {
         </div>
         <input type="submit" value="Sign In" className={SignupStyles.RegisterBtn} />
         <div className={SignupStyles.CtaLogin}>
-          <p>Don`&apos;t have an account?</p>
+          <p>Don&apos;t have an account?</p>
           <NavLink className={SignupStyles.SignInText} to="/Signup">
             Sign Up
           </NavLink>
