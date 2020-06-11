@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { addVespas } from '../redux/actions/index';
 import Spinner from '../components/Spinner';
+import VespaListStyles from '../scss/vespalist.module.scss';
+import SideBar from '../components/SideBar';
 
 const VespaList = ({ vespas, addVespas }) => {
   const [showSpinner, setShowSpinner] = useState(false);
+
+  const token = localStorage.getItem('token');
 
   const fetchVespas = async () => {
     if (vespas.length === 0) {
@@ -40,16 +45,21 @@ const VespaList = ({ vespas, addVespas }) => {
   };
 
   const initialize = () => {
-    fetchVespas();
+    if (!token) {
+      return <Redirect to="/Login" />;
+    }
+
+    return fetchVespas();
   };
 
   useEffect(initialize, []);
 
   return (
-    <div>
+    <div className={VespaListStyles.VespaList}>
       {
         showSpinner ? <Spinner /> : null
       }
+      <SideBar />
     </div>
   );
 };
