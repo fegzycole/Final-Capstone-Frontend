@@ -12,27 +12,30 @@ import sideBarLinks from '../utils/index';
 
 const VespaList = ({ vespas, addVespas }) => {
   const [showSpinner, setShowSpinner] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
   const [length, setLength] = useState(vespas.length);
+  const [activeIndices, setActiveIndices] = useState([0, 1, 2]);
 
   const goToPrevSlide = () => {
-    let index = activeIndex;
-    if (index === 0) {
-      index = length - 1;
-    } else {
-      index -= 1;
-    }
-    setActiveIndex(index);
+    const indices = activeIndices.map(idx => {
+      if (idx === 0) {
+        return length - 1;
+      }
+
+      return idx - 1;
+    });
+    console.log(indices);
+    setActiveIndices(indices);
   };
 
   const goToNextSlide = () => {
-    let index = activeIndex;
-    if (index === length - 1) {
-      index = 0;
-    } else {
-      index += 1;
-    }
-    setActiveIndex(index);
+    const indices = activeIndices.map(idx => {
+      if (idx === length - 1) {
+        return 0;
+      }
+      return idx + 1;
+    });
+    console.log(indices);
+    setActiveIndices(indices);
   };
 
   const token = localStorage.getItem('token');
@@ -94,7 +97,7 @@ const VespaList = ({ vespas, addVespas }) => {
       <Carousel
         handleLeftClick={goToPrevSlide}
         handleRightClick={goToNextSlide}
-        activeIndex={activeIndex}
+        activeIndices={activeIndices}
         length={length}
         vespas={vespas}
       />

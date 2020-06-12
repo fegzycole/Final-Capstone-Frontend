@@ -91,8 +91,14 @@
   display: none;
 }
 
+.Slides {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .Slide {
-  width: 300px;
+  width: 30%;
   margin: 0 auto;
   text-align: center;
   display: flex;
@@ -103,8 +109,8 @@
 }
 
 .Image {
-  width: 400px;
-  height: 350px;
+  width: 60%;
+  height: 200px;
   border-radius: 50%;
 }
 
