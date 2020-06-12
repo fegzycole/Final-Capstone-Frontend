@@ -1,0 +1,59 @@
+.LeftArrowContainer {
+  width: 70px;
+  background: rgb(150, 190, 14);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.RightArrowContainer {
+  width: 70px;
+  background: rgb(150, 190, 14);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.LeftArrow {
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-right: 20px solid #FFFFFF;
+	border-bottom: 10px solid transparent;
+}
+
+.LeftArrowSmaller {
+  width: 0;
+	height: 0;
+	border-top: 8px solid transparent;
+	border-right: 15px solid #c4db78;
+	border-bottom: 8px solid transparent;
+  position: relative;
+  top: -8px;
+  left: 3px;
+}
+
+.RightArrow {
+  width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-left: 20px solid #FFFFFF;
+	border-bottom: 10px solid transparent;
+}
+
+.RightArrowSmaller {
+  width: 0;
+	height: 0;
+	border-top: 8px solid transparent;
+	border-left: 15px solid #c4db78;
+	border-bottom: 8px solid transparent;
+  position: relative;
+  top: -8px;
+  left: -18px;
+}

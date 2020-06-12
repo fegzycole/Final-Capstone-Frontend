@@ -7,6 +7,7 @@ import { addVespas } from '../redux/actions/index';
 import Spinner from '../components/Spinner';
 import VespaListStyles from '../scss/vespalist.module.scss';
 import SideBar from '../components/SideBar';
+import sideBarLinks from '../utils/index';
 
 const VespaList = ({ vespas, addVespas }) => {
   const [showSpinner, setShowSpinner] = useState(false);
@@ -59,7 +60,7 @@ const VespaList = ({ vespas, addVespas }) => {
       {
         showSpinner ? <Spinner /> : null
       }
-      <SideBar />
+      <SideBar links={sideBarLinks} />
     </div>
   );
 };

@@ -1,41 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SideBarLinksStyles from '../scss/sidebarlinks.module.scss';
 
-const SideBarLinks = () => (
+const SideBarLinks = ({ links }) => (
   <div className={SideBarLinksStyles.SideBarLinks}>
-    <a
-      rel="noopener noreferrer"
-      href="https://twitter.com/fergusoniyara"
-      target="_blank"
-      className={SideBarLinksStyles.Link}
-    >
-      <i className="fa fa-twitter twitter" />
-    </a>
-    <a
-      rel="noopener noreferrer"
-      href="https://github.com/fegzycole"
-      target="_blank"
-      className={SideBarLinksStyles.Link}
-    >
-      <i className="fa fa-github github" />
-    </a>
-    <a
-      rel="noopener noreferrer"
-      href="https://www.linkedin.com/in/fergusoniyara/"
-      target="_blank"
-      className={SideBarLinksStyles.Link}
-    >
-      <i className="fa fa-linkedin linkedIn" />
-    </a>
-    <a
-      rel="noopener noreferrer"
-      href="https://www.instagram.com/fegor___/"
-      target="_blank"
-      className={SideBarLinksStyles.Link}
-    >
-      <i className="fa fa-instagram instagram" />
-    </a>
+    {
+      links.map(({ link, className }) => (
+        <a
+          rel="noopener noreferrer"
+          href={link}
+          target="_blank"
+          className={SideBarLinksStyles.Link}
+          key={`${Math.random()}-${Math.random()}`}
+        >
+          <i className={className} />
+        </a>
+      ))
+    }
   </div>
 );
+
+SideBarLinks.propTypes = {
+  links: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default SideBarLinks;
