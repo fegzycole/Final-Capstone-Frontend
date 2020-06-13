@@ -8,7 +8,7 @@ import Spinner from '../components/Spinner';
 import VespaListStyles from '../scss/vespalist.module.scss';
 import Carousel from '../components/Carousel';
 import SideBar from '../components/SideBar';
-import sideBarLinks from '../utils/index';
+import { sideBarLinks } from '../utils/index';
 
 const VespaList = ({ vespas, addVespas }) => {
   const [showSpinner, setShowSpinner] = useState(false);
@@ -23,7 +23,6 @@ const VespaList = ({ vespas, addVespas }) => {
 
       return idx - 1;
     });
-    console.log(indices);
     setActiveIndices(indices);
   };
 
@@ -34,7 +33,6 @@ const VespaList = ({ vespas, addVespas }) => {
       }
       return idx + 1;
     });
-    console.log(indices);
     setActiveIndices(indices);
   };
 

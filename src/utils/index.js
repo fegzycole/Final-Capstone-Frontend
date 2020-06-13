@@ -1,4 +1,4 @@
-const sideBarLinks = [
+export const sideBarLinks = [
   {
     link: 'https://twitter.com/fergusoniyara',
     className: 'fa fa-twitter twitter',
@@ -17,4 +17,8 @@ const sideBarLinks = [
   },
 ];
 
-export default sideBarLinks;
+
+export const vespaLinks = sideBarLinks.map(({ link, className }) => ({
+  link,
+  className: `${className} rounded`,
+}));

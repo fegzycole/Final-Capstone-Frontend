@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SideBarLinksStyles from '../scss/sidebarlinks.module.scss';
+import '../scss/util.scss';
 
 const SideBarLinks = ({ links }) => (
   <div className={SideBarLinksStyles.SideBarLinks}>

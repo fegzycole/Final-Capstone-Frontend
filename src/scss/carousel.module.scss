@@ -5,7 +5,7 @@
 }
 
 .LeftArrowContainer {
-  width: 100px;
+  width: 70px;
   height: 50px;
   background: rgb(150, 190, 14);
   border-top-right-radius: 20px;
@@ -25,7 +25,7 @@
 }
 
 .RightArrowContainer {
-  width: 100px;
+  width: 70px;
   height: 50px;
   background: rgb(150, 190, 14);
   border-top-left-radius: 20px;
@@ -93,6 +93,20 @@
 
 .Slides {
   width: 100%;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.SlidesSection {
+  width: 100%;
+}
+
+.SlideItems {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -105,7 +119,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .Image {
@@ -132,4 +145,42 @@
   background: rgb(150, 190, 14);
   text-decoration: none;
   padding: 7px 15px;
+}
+
+.SlideBigHeader {
+  font-family: 'Roboto Slab', serif;
+  font-size: 34px;
+  text-transform: uppercase;
+  color: rgb(112, 112, 112);
+  font-weight: 700;
+}
+
+.SlideBigText {
+  font-family: 'Roboto Slab', serif;
+  color: rgb(65, 60, 60);
+  margin: 5px 0 40px 0;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.CarouselDots {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+  margin: 15px auto;
+  list-style: none;
+
+  li {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+}
+
+.ActiveDot {
+  background-color: rgb(65, 60, 60);
+}
+
+.PassiveDot {
+  background-color: rgb(187, 184, 184);
 }
