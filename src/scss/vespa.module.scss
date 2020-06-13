@@ -1,0 +1,37 @@
+.VespaContainer {
+  width: 100%;
+}
+
+.Vespa {
+  width: calc(100% - 200px);
+  margin-left: 200px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.VespaSection {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.VespaImg {
+  width: 55%;
+  height: 400px;
+  margin: 0 auto 10px auto;
+}
+
+.Header {
+  font-family: 'Roboto Slab', serif;
+  font-size: 25px;
+  color: rgb(65, 60, 60);
+}
+
+.Text {
+  font-family: Poppins, sans-serif;
+  margin-top: 10px;
+  color: rgb(121, 115, 115);
+}

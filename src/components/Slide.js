@@ -8,7 +8,7 @@ import { vespaLinks } from '../utils/index';
 const Slide = ({ vespa, index }) => (
   <section className={CarouselStyles.Slide}>
     <NavLink
-      to={`/VespaList/${index}`}
+      to={`/Vespa/${index}`}
       className={CarouselStyles.Active}
       key={`${Math.random()}-${Math.random()}`}
     >
