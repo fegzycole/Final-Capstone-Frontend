@@ -53,7 +53,10 @@ const Signup = ({ history }) => {
       });
 
       setShowSpinner(false);
+
       localStorage.setItem('token', token);
+
+      localStorage.setItem('email', email);
 
       history.push('/VespaList');
 

@@ -36,6 +36,8 @@ const SignIn = ({ history }) => {
 
       localStorage.setItem('token', token);
 
+      localStorage.setItem('email', email);
+
       history.push('/VespaList');
 
       return undefined;

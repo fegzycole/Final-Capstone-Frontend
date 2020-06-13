@@ -1,0 +1,83 @@
+.OverLay {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+.Form {
+  width: 400px;
+  padding: 15px;
+  position: relative;
+  background-color: #FFFFFF;
+  border-radius: 7px;
+}
+
+.Header {
+  text-align: center;
+  color: rgb(150, 190, 14);
+  font-family: 'Roboto Slab', serif;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.Label {
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+}
+
+.Section {
+  margin-bottom: 15px;
+}
+
+.FormInput {
+  border: 1px solid rgb(150, 190, 14);
+  width: 100%;
+  padding: 10px 7px;
+  border-radius: 5px;
+  font-family: Poppins, sans-serif;
+}
+
+.FormInput::placeholder {
+  font-family: Poppins, sans-serif;
+}
+
+.SubmitBtn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: rgb(150, 190, 14);
+  color: #FFFFFF;
+  border-radius: 5px;
+  font-family: Poppins, sans-serif;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.CancelBtn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(150, 190, 14);
+  color: #FFFFFF;
+  font-family: Poppins, sans-serif;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.CancelBtn:focus {
+  outline: none;
+}
