@@ -17,7 +17,11 @@ const LeftArrow = ({ handleClick }) => (
 );
 
 LeftArrow.propTypes = {
-  handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func,
+};
+
+LeftArrow.defaultProps = {
+  handleClick: () => null,
 };
 
 export default LeftArrow;

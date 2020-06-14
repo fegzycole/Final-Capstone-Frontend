@@ -17,14 +17,16 @@ const Carousel = ({
 
 Carousel.propTypes = {
   activeIndices: PropTypes.instanceOf(Array),
-  handleLeftClick: PropTypes.func.isRequired,
-  handleRightClick: PropTypes.func.isRequired,
+  handleLeftClick: PropTypes.func,
+  handleRightClick: PropTypes.func,
   vespas: PropTypes.instanceOf(Array),
 };
 
 Carousel.defaultProps = {
   activeIndices: [],
   vespas: [],
+  handleLeftClick: () => null,
+  handleRightClick: () => null,
 };
 
 export default Carousel;

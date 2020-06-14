@@ -100,17 +100,20 @@ const FormModal = ({
 FormModal.propTypes = {
   email: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func,
   date: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  handleClick: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func,
+  handleClick: PropTypes.func,
   error: PropTypes.string,
 };
 
 FormModal.defaultProps = {
   error: null,
+  handleChange: () => null,
+  handleSubmit: () => null,
+  handleClick: () => null,
 };
 
 export default FormModal;

@@ -32,7 +32,7 @@ FormArea.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func,
-  imageUrl: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   errorMessage: PropTypes.string,
@@ -41,6 +41,7 @@ FormArea.propTypes = {
 FormArea.defaultProps = {
   handleChange: () => null,
   errorMessage: null,
+  imageUrl: null,
 };
 
 export default FormArea;

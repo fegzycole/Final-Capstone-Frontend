@@ -19,7 +19,11 @@ const ConfirmationMessage = ({ handleClick }) => (
 );
 
 ConfirmationMessage.propTypes = {
-  handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func,
+};
+
+ConfirmationMessage.defaultProps = {
+  handleClick: () => null,
 };
 
 export default ConfirmationMessage;

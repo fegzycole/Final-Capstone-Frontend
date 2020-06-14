@@ -17,7 +17,11 @@ const RightArrow = ({ handleClick }) => (
 );
 
 RightArrow.propTypes = {
-  handleClick: PropTypes.func.isRequired,
+  handleClick: PropTypes.func,
+};
+
+RightArrow.defaultProps = {
+  handleClick: () => null,
 };
 
 export default RightArrow;

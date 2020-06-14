@@ -33,7 +33,11 @@ const SideBar = ({ links, hamClicked }) => (
 
 SideBar.propTypes = {
   links: PropTypes.instanceOf(Object).isRequired,
-  hamClicked: PropTypes.bool.isRequired,
+  hamClicked: PropTypes.bool,
+};
+
+SideBar.defaultProps = {
+  hamClicked: false,
 };
 
 const mapStateToProps = ({ hamClicked }) => ({
