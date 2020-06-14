@@ -1,12 +1,23 @@
+.Ham {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: #FFFFFF;
+  z-index: 20;
+  height: 30px;
+  display: none;
+  padding-top: 5px;
+}
+
 .HamContainer {
   width: 25px;
   height: 5px;
   border-radius: 10px;
   background-color: rgb(150, 190, 14);
   position: relative;
-  margin: 30px auto 30px auto;
+  margin: 0 auto;
   cursor: pointer;
-  display: none;
+  top: 10px;
 }
 
 .HamContainer::before {
@@ -17,6 +28,7 @@
   background-color: rgb(150, 190, 14);
   display: block;
   position: absolute;
+  cursor: pointer;
   top: -7px;
 }
 
@@ -28,11 +40,16 @@
   background-color: rgb(150, 190, 14);
   display: block;
   position: absolute;
+  cursor: pointer;
   top: 7px;
 }
 
+.HamContainer:focus {
+  outline: none;
+}
+
 @media screen and (max-width: 650px) {
-  .HamContainer {
+  .Ham {
     display: block;
   }
 }

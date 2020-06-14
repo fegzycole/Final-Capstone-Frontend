@@ -1,11 +1,13 @@
 import React from 'react';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import SideBarStyles from '../scss/sidebar.module.scss';
 import SocialLinks from './SocialLinks';
 
-const SideBar = ({ links }) => (
-  <div className={SideBarStyles.SideBar}>
+const SideBar = ({ links, hamClicked }) => (
+  <div className={cx(SideBarStyles.SideBar, { [SideBarStyles.ShowSideBar]: hamClicked })}>
     <h3 className={SideBarStyles.Header}>Vespa</h3>
 
     <ul className={SideBarStyles.UnorderedList}>
@@ -31,9 +33,11 @@ const SideBar = ({ links }) => (
 
 SideBar.propTypes = {
   links: PropTypes.instanceOf(Object).isRequired,
+  hamClicked: PropTypes.bool.isRequired,
 };
 
-SideBar.defaultProps = {
-};
+const mapStateToProps = ({ hamClicked }) => ({
+  hamClicked,
+});
 
-export default SideBar;
+export default connect(mapStateToProps)(SideBar);

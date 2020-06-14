@@ -52,3 +52,15 @@ th, td {
   font-weight: 300;
   margin-bottom: 10px;
 }
+
+@media screen and (max-width: 650px) {
+  .BigContainer {
+    display: block;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .Records {
+    width: 95%;
+  }
+}

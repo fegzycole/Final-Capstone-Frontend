@@ -17,7 +17,7 @@
 }
 
 .VespaImg {
-  width: 55%;
+  width: 65%;
   height: 400px;
   margin: 0 auto 10px auto;
 }
@@ -72,4 +72,21 @@
 
 .HideMsg {
   cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+  .Vespa {
+    display: block;
+    padding-top: 40px;
+  }
+
+  .VespaImg {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .VespaImg {
+    width: 55%;
+  }
 }

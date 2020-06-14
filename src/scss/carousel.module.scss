@@ -107,6 +107,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .Slide {
@@ -181,4 +182,21 @@
 
 .PassiveDot {
   background-color: rgb(187, 184, 184);
+}
+
+@media screen and (max-width: 650px) {
+  .Slides {
+    display: block;
+    padding-top: 20px;
+  }
+
+  .SlideItems {
+    width: 90%;
+    margin: 10px auto 40px auto;
+  }
+
+  .Slide {
+    width: 80%;
+    margin: 20px auto;
+  }
 }
