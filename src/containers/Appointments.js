@@ -111,7 +111,7 @@ const Appointments = ({ appointments, addAppointments, vespas }) => {
             </table>
           </div>
         ) : (
-          <div className={AppointmentStyles.BigContainer}>
+          <div className={AppointmentStyles.BigContainerEmpty}>
             <h4 className={AppointmentStyles.Header}>No Bookings Yet</h4>
           </div>
         )
