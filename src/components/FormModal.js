@@ -11,6 +11,7 @@ const FormModal = ({
   city,
   handleSubmit,
   handleClick,
+  error,
 }) => (
   <div className={FormStyles.OverLay}>
     <form onSubmit={handleSubmit} className={FormStyles.Form}>
@@ -24,6 +25,7 @@ const FormModal = ({
         X
       </div>
       <h2 className={FormStyles.Header}>Book Appointment</h2>
+      <p className={FormStyles.Error}>{error}</p>
 
       <div className={FormStyles.Section}>
         <p className={FormStyles.Label}>Email</p>
@@ -104,6 +106,11 @@ FormModal.propTypes = {
   city: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
+  error: PropTypes.string,
+};
+
+FormModal.defaultProps = {
+  error: null,
 };
 
 export default FormModal;

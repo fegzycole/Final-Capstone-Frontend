@@ -14,6 +14,11 @@ const SideBar = ({ links }) => (
           MODELS
         </NavLink>
       </li>
+      <li className={SideBarStyles.Model}>
+        <NavLink to="/Appointments" className={SideBarStyles.ModelLink}>
+          APPOINTMENTS
+        </NavLink>
+      </li>
       <li className={SideBarStyles.LogoutBtn}>LOGOUT</li>
     </ul>
 
