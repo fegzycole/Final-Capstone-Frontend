@@ -112,6 +112,7 @@
 
 .Slide {
   width: 30%;
+  height: 350px;
   margin: 0 auto;
   text-align: center;
   display: flex;
@@ -121,8 +122,8 @@
 }
 
 .Image {
-  width: 60%;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
 }
 
@@ -136,6 +137,7 @@
 .SlideText {
   font-family: Poppins, sans-serif;
   color: rgb(112, 112, 112);
+  font-size: 12px;
   margin: 20px 0;
 }
 
