@@ -1,8 +1,8 @@
 import { actions } from '../actions/index';
 
-const { ADD_VESPAS } = actions;
+const { ADD_VESPAS, ADD_APPOINTMENTS } = actions;
 
-const vespaReducer = (state = [], { type, payload }) => {
+export const vespaReducer = (state = [], { type, payload }) => {
   switch (type) {
     case ADD_VESPAS:
       return payload;
@@ -11,4 +11,11 @@ const vespaReducer = (state = [], { type, payload }) => {
   }
 };
 
-export default vespaReducer;
+export const appointmentsReducer = (state = [], { type, payload }) => {
+  switch (type) {
+    case ADD_APPOINTMENTS:
+      return payload;
+    default:
+      return state;
+  }
+};

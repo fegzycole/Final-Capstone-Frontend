@@ -1,0 +1,38 @@
+.HamContainer {
+  width: 25px;
+  height: 5px;
+  border-radius: 10px;
+  background-color: rgb(150, 190, 14);
+  position: relative;
+  margin: 30px auto 30px auto;
+  cursor: pointer;
+  display: none;
+}
+
+.HamContainer::before {
+  content: '';
+  width: 25px;
+  height: 5px;
+  border-radius: 10px;
+  background-color: rgb(150, 190, 14);
+  display: block;
+  position: absolute;
+  top: -7px;
+}
+
+.HamContainer::after {
+  content: '';
+  width: 25px;
+  height: 5px;
+  border-radius: 10px;
+  background-color: rgb(150, 190, 14);
+  display: block;
+  position: absolute;
+  top: 7px;
+}
+
+@media screen and (max-width: 650px) {
+  .HamContainer {
+    display: block;
+  }
+}

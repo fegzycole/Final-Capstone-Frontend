@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import vespas from './vespas';
+import { vespaReducer, appointmentsReducer } from './vespas';
 
 export default combineReducers({
-  vespas,
+  vespas: vespaReducer,
+  appointments: appointmentsReducer,
 });

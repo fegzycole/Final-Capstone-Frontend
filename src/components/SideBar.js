@@ -15,8 +15,8 @@ const SideBar = ({ links }) => (
         </NavLink>
       </li>
       <li className={SideBarStyles.Model}>
-        <NavLink to="/Appointments" className={SideBarStyles.ModelLink}>
-          APPOINTMENTS
+        <NavLink to="/Bookings" className={SideBarStyles.ModelLink}>
+          BOOKINGS
         </NavLink>
       </li>
       <li className={SideBarStyles.LogoutBtn}>LOGOUT</li>
@@ -31,6 +31,9 @@ const SideBar = ({ links }) => (
 
 SideBar.propTypes = {
   links: PropTypes.instanceOf(Object).isRequired,
+};
+
+SideBar.defaultProps = {
 };
 
 export default SideBar;

@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Sidebar from '../components/SideBar';
-import { sideBarLinks } from '../utils/index';
 import VespaStyles from '../scss/vespa.module.scss';
 import FormModal from '../components/FormModal';
 import ConfirmationMessage from '../components/ConfirmationMessage';
 import Spinner from '../components/Spinner';
+import Container from './Container';
 
 const Vespa = ({ vespas, match }) => {
   const vespa = vespas.find((el, idx) => idx === Number(match.params.id));
@@ -97,7 +96,7 @@ const Vespa = ({ vespas, match }) => {
   };
 
   return (
-    <div className={VespaStyles.VespaContainer}>
+    <Container>
       {showConfirmation ? (
         <ConfirmationMessage handleClick={() => setShowConfirmation(false)} />
       ) : null}
@@ -115,7 +114,6 @@ const Vespa = ({ vespas, match }) => {
           handleSubmit={handleSubmit}
         />
       ) : null}
-      <Sidebar links={sideBarLinks} />
       {vespa ? (
         <div className={VespaStyles.Vespa}>
           <div className={VespaStyles.VespaSection}>
@@ -132,7 +130,7 @@ const Vespa = ({ vespas, match }) => {
           </div>
         </div>
       ) : null}
-    </div>
+    </Container>
   );
 };
 

@@ -5,6 +5,7 @@ import Signup from '../containers/Signup';
 import Signin from '../containers/Signin';
 import VespaList from '../containers/VespaList';
 import Vespa from '../containers/Vespa';
+import Appointments from '../containers/Appointments';
 
 import '../scss/index.scss';
 
@@ -16,6 +17,7 @@ const App = () => (
       <Route exact path="/Signin" component={Signin} />
       <Route exact path="/VespaList" component={VespaList} />
       <Route exact path="/Vespa/:id" component={Vespa} />
+      <Route exact path="/Bookings" component={Appointments} />
     </Switch>
   </div>
 );

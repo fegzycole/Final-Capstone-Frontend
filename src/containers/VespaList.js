@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import Container from './Container';
 import { addVespas } from '../redux/actions/index';
 import Spinner from '../components/Spinner';
-import VespaListStyles from '../scss/vespalist.module.scss';
 import Carousel from '../components/Carousel';
-import SideBar from '../components/SideBar';
-import { sideBarLinks } from '../utils/index';
 
 const VespaList = ({ vespas, addVespas }) => {
   const [showSpinner, setShowSpinner] = useState(false);
@@ -89,9 +87,8 @@ const VespaList = ({ vespas, addVespas }) => {
   useEffect(initialize, []);
 
   return (
-    <div className={VespaListStyles.VespaList}>
+    <Container>
       {showSpinner ? <Spinner /> : null}
-      <SideBar links={sideBarLinks} />
       <Carousel
         handleLeftClick={goToPrevSlide}
         handleRightClick={goToNextSlide}
@@ -99,7 +96,7 @@ const VespaList = ({ vespas, addVespas }) => {
         length={length}
         vespas={vespas}
       />
-    </div>
+    </Container>
   );
 };
 
