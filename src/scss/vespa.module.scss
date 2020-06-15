@@ -32,7 +32,7 @@
 }
 
 .VespaImg {
-  width: 65%;
+  width: 400px;
   height: 400px;
   margin: 0 auto 10px auto;
 }
@@ -90,11 +90,6 @@
 }
 
 @media screen and (max-width: 650px) {
-  .Vespa {
-    display: block;
-    padding-top: 40px;
-  }
-
   .VespaImg {
     width: 90%;
     height: 250px;
@@ -102,12 +97,5 @@
 
   .ConfirmText {
     top: 40px;
-  }
-}
-
-@media screen and (min-width: 990px) {
-  .VespaImg {
-    width: 55%;
-    height: 300px;
   }
 }
