@@ -43,19 +43,19 @@
 }
 
 .LeftArrow {
-	width: 0;
-	height: 0;
-	border-top: 10px solid transparent;
-	border-right: 20px solid #FFFFFF;
-	border-bottom: 10px solid transparent;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-right: 20px solid #fff;
+  border-bottom: 10px solid transparent;
 }
 
 .LeftArrowSmaller {
   width: 0;
-	height: 0;
-	border-top: 8px solid transparent;
-	border-right: 15px solid #c4db78;
-	border-bottom: 8px solid transparent;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-right: 15px solid #c4db78;
+  border-bottom: 8px solid transparent;
   position: relative;
   top: -8px;
   left: 3px;
@@ -63,18 +63,18 @@
 
 .RightArrow {
   width: 0;
-	height: 0;
-	border-top: 10px solid transparent;
-	border-left: 20px solid #FFFFFF;
-	border-bottom: 10px solid transparent;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-left: 20px solid #fff;
+  border-bottom: 10px solid transparent;
 }
 
 .RightArrowSmaller {
   width: 0;
-	height: 0;
-	border-top: 8px solid transparent;
-	border-left: 15px solid #c4db78;
-	border-bottom: 8px solid transparent;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-left: 15px solid #c4db78;
+  border-bottom: 8px solid transparent;
   position: relative;
   top: -8px;
   left: -18px;
@@ -142,7 +142,7 @@
 }
 
 .NavLink {
-  color: #FFFFFF;
+  color: #fff;
   background: rgb(150, 190, 14);
   text-decoration: none;
   padding: 7px 15px;

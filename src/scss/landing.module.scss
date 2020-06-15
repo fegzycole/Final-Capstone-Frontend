@@ -2,7 +2,7 @@
   width: 100%;
   min-height: 100vh;
   height: auto;
-  background: url("../assets/vespa.jpg") no-repeat center center fixed; 
+  background: url("../assets/vespa.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -17,7 +17,7 @@
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 0;
 }
 
@@ -40,7 +40,7 @@
   align-items: center;
 
   h3 {
-    color: #FFFFFF;
+    color: #fff;
     font-family: 'Lobster', cursive;
     text-decoration: underline;
     text-align: center;
@@ -61,7 +61,7 @@
 
   h2 {
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: #fff;
     font-size: 55px;
     letter-spacing: 10px;
   }
@@ -75,7 +75,7 @@
 }
 
 .SignupBtn {
-  color: #FFFFFF;
+  color: #fff;
   text-decoration: none;
   margin: 15px 0;
   background-color: #96bf24;
@@ -87,7 +87,7 @@
 
 .SignupBtn:hover {
   border: 1px solid #96bf24;
-  background-color: #FFFFFF;
+  background-color: #fff;
   color: #96bf24;
   padding: 9px 24px;
 }
@@ -100,7 +100,6 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  
 
   p {
     text-align: center;
