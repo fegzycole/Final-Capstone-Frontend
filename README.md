@@ -66,20 +66,20 @@ A single page application built with react which allows authenticated users to p
 
 ### VespaList Page
 
-![screenshots](screenshots/VespaList.png)
+![screenshots](screenshots/VespaList.PNG)
 
-![screenshots](screenshots/VespaListSmall.png)
+![screenshots](screenshots/VespaListSmall.PNG)
 
 ## Vespa Page
 
-![screenshots](screenshots/Vespa.png)
+![screenshots](screenshots/Vespa.PNG)
 
-![screenshots](screenshots/VespaSmall.png)
+![screenshots](screenshots/VespaSmall.PNG)
 
 ### Bookings Page
-![screenshots](screenshots/Bookings.png)
+![screenshots](screenshots/Bookings.PNG)
 
-![screenshots](screenshots/BookingsSmall.png)
+![screenshots](screenshots/BookingsSmall.PNG)
 
 
 ## Usage
