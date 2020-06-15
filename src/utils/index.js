@@ -17,7 +17,6 @@ export const sideBarLinks = [
   },
 ];
 
-
 export const vespaLinks = sideBarLinks.map(({ link, className }) => ({
   link,
   className: `${className} rounded`,
