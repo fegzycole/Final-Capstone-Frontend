@@ -2,12 +2,27 @@
   width: 100%;
 }
 
-.Vespa {
+.Vespa,
+.VespaEmpty {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.VespaEmptyHeader {
+  font-family: Poppins, sans-serif;
+  text-align: center;
+  font-size: 60px;
+  color: rgb(65, 60, 60);
+}
+
+.VespaEmptyText {
+  font-family: Poppins, sans-serif;
+  text-align: center;
+  font-size: 23px;
+  color: rgb(65, 60, 60);
 }
 
 .VespaSection {

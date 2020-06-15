@@ -129,7 +129,12 @@ const Vespa = ({ vespas, match }) => {
             </button>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <div className={VespaStyles.VespaEmpty}>
+          <h4 className={VespaStyles.VespaEmptyHeader}>404</h4>
+          <p className={VespaStyles.VespaEmptyText}>Vespa Not Found</p>
+        </div>
+      )}
     </Container>
   );
 };
