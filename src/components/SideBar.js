@@ -6,8 +6,12 @@ import { NavLink } from 'react-router-dom';
 import SideBarStyles from '../scss/sidebar.module.scss';
 import SocialLinks from './SocialLinks';
 
-const SideBar = ({ links, hamClicked }) => (
-  <div className={cx(SideBarStyles.SideBar, { [SideBarStyles.ShowSideBar]: hamClicked })}>
+const SideBar = ({ links, hamClicked, handleLogout }) => (
+  <div
+    className={cx(SideBarStyles.SideBar, {
+      [SideBarStyles.ShowSideBar]: hamClicked,
+    })}
+  >
     <h3 className={SideBarStyles.Header}>Vespa</h3>
 
     <ul className={SideBarStyles.UnorderedList}>
@@ -21,7 +25,16 @@ const SideBar = ({ links, hamClicked }) => (
           BOOKINGS
         </NavLink>
       </li>
-      <li className={SideBarStyles.LogoutBtn}>LOGOUT</li>
+      <li className={SideBarStyles.LogoutBtn}>
+        <div
+          onClick={handleLogout}
+          onKeyPress={handleLogout}
+          tabIndex={0}
+          role="button"
+        >
+          LOGOUT
+        </div>
+      </li>
     </ul>
 
     <div className={SideBarStyles.SocialLinks}>
@@ -34,10 +47,12 @@ const SideBar = ({ links, hamClicked }) => (
 SideBar.propTypes = {
   links: PropTypes.instanceOf(Object).isRequired,
   hamClicked: PropTypes.bool,
+  handleLogout: PropTypes.func,
 };
 
 SideBar.defaultProps = {
   hamClicked: false,
+  handleLogout: () => null,
 };
 
 const mapStateToProps = ({ hamClicked }) => ({
