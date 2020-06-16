@@ -1,14 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { findByTestAttribute } from '../helpers/index';
-import LeftArrow from '../../components/LeftArrow';
+import CarouselStyles from '../../scss/carousel.module.scss';
+
+import Arrow from '../../components/Arrow';
 
 const setup = () => {
-  const component = shallow(<LeftArrow />);
+  const component = shallow(<Arrow
+    classOne={CarouselStyles.LeftArrowContainer}
+    classTwo={CarouselStyles.LeftArrow}
+    classThree={CarouselStyles.LeftArrowSmaller}
+  />);
   return component;
 };
 
-describe('LeftArrow Component', () => {
+describe('Arrow Component', () => {
   let component;
 
   beforeEach(() => {

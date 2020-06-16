@@ -1,23 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CarouselStyles from '../scss/carousel.module.scss';
 
-const LeftArrow = ({ handleClick }) => (
+const LeftArrow = ({
+  handleClick, classOne, classTwo, classThree,
+}) => (
   <div
-    className={CarouselStyles.LeftArrowContainer}
+    className={classOne}
     onClick={handleClick}
     role="button"
     onKeyPress={handleClick}
     tabIndex={0}
   >
-    <div className={CarouselStyles.LeftArrow}>
-      <div className={CarouselStyles.LeftArrowSmaller} />
+    <div className={classTwo}>
+      <div className={classThree} />
     </div>
   </div>
 );
 
 LeftArrow.propTypes = {
   handleClick: PropTypes.func,
+  classOne: PropTypes.string.isRequired,
+  classTwo: PropTypes.string.isRequired,
+  classThree: PropTypes.string.isRequired,
 };
 
 LeftArrow.defaultProps = {

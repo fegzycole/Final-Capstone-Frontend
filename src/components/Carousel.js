@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LeftArrow from './LeftArrow';
-import RightArrow from './RightArrow';
+import Arrow from './Arrow';
 import CarouselStyles from '../scss/carousel.module.scss';
 import Slides from './Slides';
 
@@ -9,9 +8,19 @@ const Carousel = ({
   activeIndices, handleLeftClick, handleRightClick, vespas,
 }) => (
   <div className={CarouselStyles.Carousel}>
-    <LeftArrow handleClick={handleLeftClick} />
+    <Arrow
+      handleClick={handleLeftClick}
+      classOne={CarouselStyles.LeftArrowContainer}
+      classTwo={CarouselStyles.LeftArrow}
+      classThree={CarouselStyles.LeftArrowSmaller}
+    />
     <Slides activeIndices={activeIndices} vespas={vespas} />
-    <RightArrow handleClick={handleRightClick} />
+    <Arrow
+      handleClick={handleRightClick}
+      classOne={CarouselStyles.RightArrowContainer}
+      classTwo={CarouselStyles.RightArrow}
+      classThree={CarouselStyles.RightArrowSmaller}
+    />
   </div>
 );
 
