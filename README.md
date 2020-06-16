@@ -99,12 +99,6 @@ A single page application built with react which allows authenticated users to p
 
 ## Testing
 
-- git clone https://github.com/fegzycole/Final-Capstone-Frontend.git
-
-- cd Final-Capstone-Frontend
-
-- npm install
-
 - npm run test to run the test suites
 
 <!-- FUTURE IMPROVEMENTS -->
