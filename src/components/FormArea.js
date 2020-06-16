@@ -19,9 +19,7 @@ const FormArea = ({
       />
       <img src={imageUrl} alt="" />
     </div>
-    {
-      errorMessage ? <p className={Signup.Error}>{`*${errorMessage}`}</p> : null
-    }
+    <p className={Signup.Error}>{errorMessage && `*${errorMessage}`}</p>
   </div>
 );
 

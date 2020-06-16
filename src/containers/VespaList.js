@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Container from './Container';
-import { addVespas } from '../redux/actions/index';
+import { getVespas } from '../redux/actions/index';
 import Spinner from '../components/Spinner';
 import Carousel from '../components/Carousel';
 
-const VespaList = ({ vespas, addVespas }) => {
-  const [showSpinner, setShowSpinner] = useState(false);
+const VespaList = ({ vespas, getVespas, showSpinner }) => {
   const [length, setLength] = useState(vespas.length);
   const [activeIndices, setActiveIndices] = useState([0, 1, 2]);
 
@@ -37,39 +35,7 @@ const VespaList = ({ vespas, addVespas }) => {
   const token = localStorage.getItem('token');
 
   const fetchVespas = async () => {
-    if (vespas.length === 0) {
-      const token = localStorage.getItem('token');
-
-      try {
-        setShowSpinner(true);
-
-        const {
-          data: { automobiles },
-        } = await axios.request({
-          method: 'GET',
-          url:
-            'https://desolate-mountain-07619.herokuapp.com/api/v1/automobiles',
-          headers: {
-            Authorization: token,
-          },
-        });
-
-        setLength(automobiles.length);
-
-        setShowSpinner(false);
-        return addVespas(automobiles);
-      } catch (err) {
-        setShowSpinner(false);
-
-        if (!err.response) {
-          return err.message;
-        }
-
-        return err.response;
-      }
-    }
-
-    return null;
+    await getVespas(token, setLength);
   };
 
   const checkToken = () => {
@@ -77,14 +43,18 @@ const VespaList = ({ vespas, addVespas }) => {
       return <Redirect to="/Login" />;
     }
 
-    return fetchVespas();
+    fetchVespas();
+
+    setLength(vespas.length);
+
+    return undefined;
   };
 
   const initialize = () => {
     checkToken();
   };
 
-  useEffect(initialize, []);
+  useEffect(initialize, [vespas.length]);
 
   return (
     <Container>
@@ -100,21 +70,24 @@ const VespaList = ({ vespas, addVespas }) => {
   );
 };
 
-const mapStateToProps = ({ vespas }) => ({
+const mapStateToProps = ({ vespas, showSpinner }) => ({
   vespas,
+  showSpinner,
 });
 
 const mapDispatchToProps = dispatch => ({
-  addVespas: vespas => dispatch(addVespas(vespas)),
+  getVespas: token => dispatch(getVespas(token)),
 });
 
 VespaList.propTypes = {
   vespas: PropTypes.instanceOf(Array).isRequired,
-  addVespas: PropTypes.func,
+  getVespas: PropTypes.func,
+  showSpinner: PropTypes.bool,
 };
 
 VespaList.defaultProps = {
-  addVespas: () => null,
+  getVespas: () => null,
+  showSpinner: false,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(VespaList);

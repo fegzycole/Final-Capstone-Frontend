@@ -21,3 +21,9 @@ export const vespaLinks = sideBarLinks.map(({ link, className }) => ({
   link,
   className: `${className} rounded`,
 }));
+
+export const parseJwt = token => {
+  const base64Payload = token.split('.')[1];
+  const payload = Buffer.from(base64Payload, 'base64');
+  return JSON.parse(payload);
+};

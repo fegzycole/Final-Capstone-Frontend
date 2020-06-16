@@ -1,56 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import Spinner from '../components/Spinner';
 import Container from './Container';
-import { addAppointments } from '../redux/actions/index';
+import { getBookings } from '../redux/actions/index';
 import AppointmentStyles from '../scss/appointments.module.scss';
 
-const Appointments = ({ appointments, addAppointments, vespas }) => {
+const Appointments = ({
+  appointments, getBookings, vespas, showSpinner,
+}) => {
   const token = localStorage.getItem('token');
-  const [showSpinner, setShowSpinner] = useState(false);
 
   const fetchAppointments = async () => {
     const token = localStorage.getItem('token');
-
-    try {
-      setShowSpinner(true);
-
-      const {
-        data: { bookings },
-      } = await axios.request({
-        method: 'GET',
-        url: 'https://desolate-mountain-07619.herokuapp.com/api/v1/bookings',
-        headers: {
-          Authorization: token,
-        },
-      });
-
-      const data = bookings.map(booking => {
-        const vespa = vespas.find(vespa => vespa.id === booking.automobile_id);
-        let currentDate = new Date(booking.date);
-        currentDate = currentDate.toGMTString().split(' G');
-
-        return {
-          name: vespa.name,
-          city: booking.city,
-          date: currentDate[0],
-        };
-      });
-
-      setShowSpinner(false);
-      return addAppointments(data);
-    } catch (err) {
-      setShowSpinner(false);
-
-      if (!err.response) {
-        return err.message;
-      }
-
-      return err.response;
-    }
+    getBookings(vespas, token);
   };
 
   const checkToken = () => {
@@ -120,20 +84,24 @@ const Appointments = ({ appointments, addAppointments, vespas }) => {
   );
 };
 
-const mapStateToProps = ({ appointments, vespas }) => ({ appointments, vespas });
+const mapStateToProps = ({ appointments, vespas, showSpinner }) => ({
+  appointments, vespas, showSpinner,
+});
 
 const mapDispatchToProps = dispatch => ({
-  addAppointments: appointments => dispatch(addAppointments(appointments)),
+  getBookings: (vespas, token) => dispatch(getBookings(vespas, token)),
 });
 
 Appointments.propTypes = {
   appointments: PropTypes.instanceOf(Array).isRequired,
-  addAppointments: PropTypes.func,
+  getBookings: PropTypes.func,
   vespas: PropTypes.instanceOf(Array).isRequired,
+  showSpinner: PropTypes.bool,
 };
 
 Appointments.defaultProps = {
-  addAppointments: () => null,
+  getBookings: () => null,
+  showSpinner: false,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Appointments);

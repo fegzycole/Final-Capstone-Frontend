@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import VespaStyles from '../scss/vespa.module.scss';
@@ -8,8 +7,11 @@ import FormModal from '../components/FormModal';
 import ConfirmationMessage from '../components/ConfirmationMessage';
 import Spinner from '../components/Spinner';
 import Container from './Container';
+import { bookAppointment } from '../redux/actions/index';
 
-const Vespa = ({ vespas, match }) => {
+const Vespa = ({
+  vespas, match, showSpinner, bookAppointment,
+}) => {
   const vespa = vespas.find((el, idx) => idx === Number(match.params.id));
   const email = localStorage.getItem('email');
   const token = localStorage.getItem('token');
@@ -19,7 +21,6 @@ const Vespa = ({ vespas, match }) => {
   const [date, setDate] = useState('');
   const [error, setError] = useState(null);
   const [time, setTime] = useState('');
-  const [showSpinner, setShowSpinner] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleChange = e => {
@@ -56,42 +57,22 @@ const Vespa = ({ vespas, match }) => {
 
     removePopupsAndErrors();
 
-    try {
-      setShowSpinner(true);
+    const appointmentData = {
+      token,
+      date,
+      time,
+      vespa,
+      city,
+    };
 
-      await axios.request({
-        method: 'POST',
-        url: 'https://desolate-mountain-07619.herokuapp.com/api/v1/bookings',
-        headers: {
-          Authorization: token,
-        },
-        data: {
-          booking: {
-            date: `${date} ${time}`,
-            city,
-            automobile_id: vespa.id,
-          },
-        },
-      });
+    const message = await bookAppointment(appointmentData);
 
-      setShowSpinner(false);
-
-      setShowConfirmation(true);
-
+    if (message === 'Booking successful') {
       setShowModal(false);
-
+      setShowConfirmation(true);
       clearForm();
-
-      return null;
-    } catch (error) {
-      setShowSpinner(false);
-      if (!error.response) {
-        setError(error.message);
-        return error.message;
-      }
-
-      setError(error.response.data.error);
-      return error.response.data.error;
+    } else {
+      setError(message);
     }
   };
 
@@ -139,13 +120,25 @@ const Vespa = ({ vespas, match }) => {
   );
 };
 
-const mapStateToProps = ({ vespas }) => ({
+const mapStateToProps = ({ vespas, showSpinner }) => ({
   vespas,
+  showSpinner,
+});
+
+const mapDispatchToProps = dispatch => ({
+  bookAppointment: data => dispatch(bookAppointment(data)),
 });
 
 Vespa.propTypes = {
   vespas: PropTypes.instanceOf(Array).isRequired,
   match: PropTypes.instanceOf(Object).isRequired,
+  showSpinner: PropTypes.bool,
+  bookAppointment: PropTypes.func,
 };
 
-export default withRouter(connect(mapStateToProps)(Vespa));
+Vespa.defaultProps = {
+  showSpinner: false,
+  bookAppointment: () => null,
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Vespa));

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { NavLink, withRouter } from 'react-router-dom';
 import SignupStyles from '../scss/signup.module.scss';
@@ -9,49 +9,39 @@ import EyeIcon from '../assets/eye.svg';
 import MailIcon from '../assets/mail.svg';
 import FormArea from '../components/FormArea';
 import Spinner from '../components/Spinner';
+import { signin } from '../redux/actions/index';
 
-const SignIn = ({ history }) => {
+const SignIn = ({
+  history, showSpinner, signin, signinError,
+}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState(null);
-  const [showSpinner, setShowSpinner] = useState(false);
+
+  useEffect(() => {
+    setPasswordError(signinError);
+  }, [signinError, showSpinner]);
 
   const clearErrors = () => {
     setPasswordError(null);
   };
 
-  const signin = async e => {
+  const signinUser = async e => {
     e.preventDefault();
 
     clearErrors();
 
-    try {
-      setShowSpinner(true);
-      const { data: { token } } = await axios.post('https://desolate-mountain-07619.herokuapp.com/api/v1/auth/signin', {
-        email,
-        password,
-      });
+    const userData = {
+      email,
+      password,
+    };
 
-      setShowSpinner(false);
+    await signin(userData);
 
-      localStorage.setItem('token', token);
+    const token = localStorage.getItem('token');
 
-      localStorage.setItem('email', email);
-
+    if (token) {
       history.push('/VespaList');
-
-      return undefined;
-    } catch (err) {
-      setShowSpinner(false);
-
-      if (!err.response) {
-        return err.message;
-      }
-
-      const { response: { data: { error } } } = err;
-
-      setPasswordError(error);
-      return null;
     }
   };
 
@@ -62,7 +52,7 @@ const SignIn = ({ history }) => {
       }
       <Header />
       <Overlay />
-      <form className={SignupStyles.SigninForm} onSubmit={signin}>
+      <form className={SignupStyles.SigninForm} onSubmit={signinUser}>
         <h2>Create An Account</h2>
         <div className={SignupStyles.EmailSection}>
           <FormArea
@@ -105,10 +95,24 @@ const SignIn = ({ history }) => {
 
 SignIn.propTypes = {
   history: PropTypes.instanceOf(Object),
+  signinError: PropTypes.string,
+  signin: PropTypes.func,
+  showSpinner: PropTypes.bool.isRequired,
 };
 
 SignIn.defaultProps = {
   history: {},
+  signinError: null,
+  signin: () => null,
 };
 
-export default withRouter(SignIn);
+const mapStateToProps = ({ signinError, showSpinner }) => ({
+  signinError,
+  showSpinner,
+});
+
+const mapDispatchToProps = dispatch => ({
+  signin: userData => dispatch(signin(userData)),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignIn));

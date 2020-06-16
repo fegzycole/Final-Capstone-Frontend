@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SignupStyles from '../scss/signup.module.scss';
@@ -10,8 +10,11 @@ import PersonIcon from '../assets/man.svg';
 import MailIcon from '../assets/mail.svg';
 import FormArea from '../components/FormArea';
 import Spinner from '../components/Spinner';
+import { signup } from '../redux/actions/index';
 
-const Signup = ({ history }) => {
+const Signup = ({
+  history, signupErrors, signup, showSpinner,
+}) => {
   const [firstName, setFirstName] = useState('');
   const [firstNameError, setFirstNameError] = useState(null);
   const [lastName, setLastName] = useState('');
@@ -22,7 +25,15 @@ const Signup = ({ history }) => {
   const [passwordError, setPasswordError] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState(null);
-  const [showSpinner, setShowSpinner] = useState(false);
+
+  useEffect(() => {
+    signupErrors.forEach(err => {
+      if (err.toLowerCase().match('first')) setFirstNameError(err);
+      if (err.toLowerCase().match('last')) setLastNameError(err);
+      if (err.toLowerCase().match('email')) setEmailError(err);
+      if (err.toLowerCase().match('password')) setPasswordError(err);
+    });
+  }, [signupErrors, showSpinner]);
 
   const clearErrorMessages = () => {
     setFirstNameError(null);
@@ -32,54 +43,31 @@ const Signup = ({ history }) => {
     setConfirmPasswordError(null);
   };
 
-  const signup = async e => {
+  const signupUser = async e => {
     e.preventDefault();
 
     clearErrorMessages();
 
     if (password !== confirmPassword) {
-      return setConfirmPasswordError('Passwords must match');
-    }
+      setConfirmPasswordError('Passwords must match');
+    } else {
+      const userData = {
+        firstName,
+        lastName,
+        email,
+        password,
+      };
 
-    try {
-      setShowSpinner(true);
-      const { data: { token } } = await axios.post('https://desolate-mountain-07619.herokuapp.com/api/v1/auth/signup', {
-        user: {
-          first_name: firstName,
-          last_name: lastName,
-          email,
-          password,
-        },
-      });
+      await signup(userData);
 
-      setShowSpinner(false);
+      const token = localStorage.getItem('token');
 
-      localStorage.setItem('token', token);
-
-      localStorage.setItem('email', email);
-
-      history.push('/VespaList');
-
-      return null;
-    } catch (error) {
-      setShowSpinner(false);
-
-      if (!error.response) {
-        return error.message;
+      if (token) {
+        history.push('/VespaList');
       }
-
-      const { response: { data: { errors } } } = error;
-
-      errors.forEach(err => {
-        if (err.toLowerCase().match('first')) setFirstNameError(err);
-        if (err.toLowerCase().match('last')) setLastNameError(err);
-        if (err.toLowerCase().match('email')) setEmailError(err);
-        if (err.toLowerCase().match('password')) setPasswordError(err);
-      });
-
-      return null;
     }
   };
+
   return (
     <div className={SignupStyles.Signup}>
       {
@@ -87,7 +75,7 @@ const Signup = ({ history }) => {
       }
       <Header />
       <Overlay />
-      <form className={SignupStyles.Form} onSubmit={signup}>
+      <form className={SignupStyles.Form} onSubmit={signupUser}>
         <h2>Create An Account</h2>
 
         <div className={SignupStyles.FormSection}>
@@ -170,10 +158,24 @@ const Signup = ({ history }) => {
 
 Signup.propTypes = {
   history: PropTypes.instanceOf(Object),
+  signupErrors: PropTypes.instanceOf(Array),
+  signup: PropTypes.func,
+  showSpinner: PropTypes.bool.isRequired,
 };
 
 Signup.defaultProps = {
   history: {},
+  signupErrors: [],
+  signup: () => null,
 };
 
-export default withRouter(Signup);
+const mapStateToProps = ({ signupErrors, showSpinner }) => ({
+  signupErrors,
+  showSpinner,
+});
+
+const mapDispatchToProps = dispatch => ({
+  signup: userData => dispatch(signup(userData)),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signup));
