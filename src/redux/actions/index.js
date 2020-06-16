@@ -50,6 +50,8 @@ export const signup = userData => {
 
   return async dispatch => {
     try {
+      localStorage.clear();
+
       dispatch(toggleSpinner());
 
       const { data: { token } } = await axios.post('https://desolate-mountain-07619.herokuapp.com/api/v1/auth/signup', {
@@ -87,6 +89,8 @@ export const signin = userData => {
 
   return async dispatch => {
     try {
+      localStorage.clear();
+
       dispatch(toggleSpinner());
       dispatch(addSignInErrors(null));
 
