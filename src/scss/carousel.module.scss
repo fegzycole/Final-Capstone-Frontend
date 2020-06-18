@@ -1,0 +1,204 @@
+.Carousel {
+  position: relative;
+}
+
+.LeftArrowContainer {
+  width: 70px;
+  height: 50px;
+  background: rgb(150, 190, 14);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 50vh;
+  cursor: pointer;
+}
+
+.LeftArrowContainer:focus {
+  outline: none;
+}
+
+.RightArrowContainer {
+  width: 70px;
+  height: 50px;
+  background: rgb(150, 190, 14);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  top: 50vh;
+  cursor: pointer;
+}
+
+.RightArrowContainer:focus {
+  outline: none;
+}
+
+.LeftArrow {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-right: 20px solid #fff;
+  border-bottom: 10px solid transparent;
+}
+
+.LeftArrowSmaller {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-right: 15px solid #c4db78;
+  border-bottom: 8px solid transparent;
+  position: relative;
+  top: -8px;
+  left: 3px;
+}
+
+.RightArrow {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-left: 20px solid #fff;
+  border-bottom: 10px solid transparent;
+}
+
+.RightArrowSmaller {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-left: 15px solid #c4db78;
+  border-bottom: 8px solid transparent;
+  position: relative;
+  top: -8px;
+  left: -18px;
+}
+
+.Active {
+  display: block;
+  text-decoration: none;
+}
+
+.Inactive {
+  display: none;
+}
+
+.Slides {
+  width: 100%;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.SlidesSection {
+  width: 100%;
+}
+
+.SlideItems {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.Slide {
+  width: 30%;
+  height: 350px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.SlideHeader {
+  font-family: 'Roboto Slab', serif;
+  color: rgb(112, 112, 112);
+  margin-bottom: 20px;
+  font-size: 19px;
+}
+
+.SlideText {
+  font-family: Poppins, sans-serif;
+  color: rgb(112, 112, 112);
+  font-size: 12px;
+  margin: 20px 0;
+}
+
+.NavLink {
+  color: #fff;
+  background: rgb(150, 190, 14);
+  text-decoration: none;
+  padding: 7px 15px;
+}
+
+.SlideBigHeader {
+  font-family: 'Roboto Slab', serif;
+  font-size: 34px;
+  text-transform: uppercase;
+  color: rgb(112, 112, 112);
+  font-weight: 700;
+}
+
+.SlideBigText {
+  font-family: 'Roboto Slab', serif;
+  color: rgb(65, 60, 60);
+  margin: 5px 0 40px 0;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.CarouselDots {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+  margin: 15px auto;
+  list-style: none;
+
+  li {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+}
+
+.ActiveDot {
+  background-color: rgb(65, 60, 60);
+}
+
+.PassiveDot {
+  background-color: rgb(187, 184, 184);
+}
+
+@media screen and (max-width: 650px) {
+  .Slides {
+    display: block;
+    padding-top: 20px;
+  }
+
+  .SlideItems {
+    width: 90%;
+    margin: 10px auto 40px auto;
+  }
+
+  .Slide {
+    width: 80%;
+    margin: 20px auto;
+  }
+}

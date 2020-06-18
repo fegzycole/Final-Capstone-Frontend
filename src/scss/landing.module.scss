@@ -1,0 +1,138 @@
+.LandingPage {
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  background: url("../assets/vespa.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.Overlay {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.Header {
+  width: 100%;
+  padding: 30px;
+}
+
+.HeaderDiv {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: #96bf24;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h3 {
+    color: #fff;
+    font-family: 'Lobster', cursive;
+    text-decoration: underline;
+    text-align: center;
+    transform: skewY(-10deg);
+    font-size: 70px;
+    margin-top: -15px;
+  }
+}
+
+.CtaSection {
+  position: relative;
+  width: 95%;
+  margin: 30px auto;
+  text-align: center;
+  z-index: 2;
+  font-family: 'Roboto Slab', serif;
+  margin-bottom: 12px;
+
+  h2 {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 55px;
+    letter-spacing: 10px;
+  }
+
+  p {
+    font-size: 22px;
+    color: rgb(231, 224, 224);
+    font-weight: 300;
+    margin-bottom: 30px;
+  }
+}
+
+.SignupBtn {
+  color: #fff;
+  text-decoration: none;
+  margin: 15px 0;
+  background-color: #96bf24;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 300;
+  font-family: 'Poppins', sans-serif;
+}
+
+.SignupBtn:hover {
+  border: 1px solid #96bf24;
+  background-color: #fff;
+  color: #96bf24;
+  padding: 9px 24px;
+}
+
+.CtaLogin {
+  margin: 40px auto;
+  width: 50%;
+  display: flex;
+  font-style: normal;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  p {
+    text-align: center;
+    font-size: 19px;
+  }
+}
+
+.SignInText {
+  align-self: flex-start;
+  color: #96bf24;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 2px;
+  font-family: 'Poppins', sans-serif;
+}
+
+@media screen and (max-width: 650px) {
+  .CtaSection {
+    width: 95%;
+
+    h2 {
+      font-size: 30px;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .CtaLogin {
+    width: 90%;
+  }
+}

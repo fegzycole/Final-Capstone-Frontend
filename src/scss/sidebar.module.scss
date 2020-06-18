@@ -1,0 +1,86 @@
+.SideBar {
+  position: fixed;
+  width: 200px;
+  padding: 20px 0;
+  height: 100vh;
+  z-index: 6;
+  box-shadow: inset 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.05);
+  border: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+.Header {
+  font-family: 'Lobster', cursive;
+  text-decoration: underline;
+  text-align: center;
+  transform: skewY(-10deg);
+  font-size: 40px;
+  margin-top: -15px;
+  color: #747171;
+}
+
+.UnorderedList {
+  margin-top: 150px;
+  margin-left: 30px;
+
+  li {
+    list-style-type: none;
+    margin-bottom: 20px;
+    font-family: Poppins, sans-serif;
+    font-weight: 700px;
+    letter-spacing: 1px;
+    padding: 7px 15px;
+    color: rgb(112, 112, 112);
+  }
+}
+
+.ModelLink {
+  color: rgb(112, 112, 112);
+  text-decoration: none;
+}
+
+.SocialLinks {
+  position: fixed;
+  bottom: 10px;
+  width: 200px;
+}
+
+.SocialLinksP {
+  text-align: center;
+  font-family: Poppins, sans-serif;
+  color: rgb(112, 112, 112);
+  font-size: 13px;
+}
+
+.LogoutBtn {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 650px) {
+  .SideBar {
+    width: 100%;
+    top: 30px;
+    background: #fff;
+    height: inherit;
+    display: none;
+    z-index: 20;
+  }
+
+  .UnorderedList {
+    margin-top: 40px;
+    margin-left: 0;
+    text-align: center;
+
+    li {
+      width: 100%;
+    }
+  }
+
+  .SocialLinks {
+    position: static;
+    width: 100%;
+  }
+
+  .ShowSideBar {
+    display: block;
+  }
+}
